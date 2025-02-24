@@ -1,145 +1,100 @@
-import java.util.Scanner;
+import java.util.*;
+import java.lang.*;
 
-// Kelas abstrak untuk bangun ruang
-abstract class BangunRuang {
-    protected double volume;
-    protected double luasPermukaan;
+class mengukurBangun {
+	static Scanner scan = new Scanner(System.in);
+	static int kodeBangun;
+	static String ulangkah;
 
-    public abstract void hitungVolume();
-    public abstract void hitungLuasPermukaan();
-
-    public void tampilHasil() {
-        System.out.printf("Volume: %.2f\n", volume);
-        System.out.printf("Luas Permukaan: %.2f\n", luasPermukaan);
-    }
+	public static void main(String[] args) {
+		programMulai();
+		programInput();
+		programSelesai();
+	}
+	static void programMulai() {
+		System.out.println("===========================");
+		System.out.println("== Program Hitung Bangun ==");
+		System.out.println("===========================");
+	}
+	static void programInput() {
+		System.out.println("1.\t Kubus");
+		System.out.println("2.\t Balok");
+		System.out.println("3.\t Silinder");
+		System.out.println("0.\t keluar");
+		System.out.println("Ingin menghitung bangun apa?");
+		kodeBangun = scan.nextInt();
+		menentukanRuang();
+	}
+	static void menentukanRuang() {
+		switch (kodeBangun) {
+			case 0:
+				break;
+			case 1:
+				programKubus();
+				break;
+			case 2:
+				programBalok();
+				break;
+			case 3:
+				programSilinder();
+				break;
+			default:
+				programGagal();
+		}
+	}
+	static void programGagal() {
+		System.out.println("Inputan tidak valid (1-3)");
+		programUlang();
+	}
+	static void programUlang() {
+		System.out.printf("Ingin mengulang? (Y/N) ");
+		ulangkah=scan.next();
+		System.out.println();
+		if(ulangkah.equalsIgnoreCase("Y")) programInput();
+	}
+	static void programSelesai() {
+		System.out.println("===========================");
+		System.out.println("== TERIMAKASIH^^ SEE YOU ==");
+		System.out.println("===========================");
+	}
+	static void programKubus() {
+		System.out.printf("Masukkan panjang satu sisi: ");
+		double x = scan.nextDouble();
+		double volume = Math.pow(x,3), luasPermukaan= x*x*6;
+		System.out.printf("\nVolume Kubus adalah\t: %.2f\n", volume);
+		System.out.printf("Luas Permukaan Kubus adalah\t: %.2f\n",luasPermukaan);
+		programUlang();
+	}
+	static void programBalok() {
+		System.out.printf("Masukkan panjang ketiga sisi: ");
+		double sisi[] = new double[3];
+		for(int i=0; i<3; i++) sisi[i] = scan.nextDouble();
+		double volume = sisi[0]*sisi[1]*sisi[2], luasPermukaan = 2*(sisi[0]*sisi[1])+2*(sisi[0]*sisi[2])+2*(sisi[1]*sisi[2]);
+		System.out.printf("\nVolume Balok adalah\t\t: %.2f\n",volume);
+		System.out.printf("Luas Permukaan Balok adalah\t: %.2f\n",luasPermukaan);
+		programUlang();
+	}
+	static void programSilinder() {
+		System.out.printf("Masukkan tinggi dan radius: ");
+		double tinggi = scan.nextDouble(), radius = scan.nextDouble();
+		double luasLingkaran = silinder.luasLingkaran(radius), keliling = silinder.kelilingLingkaran(radius*2);
+		double volume = silinder.volume(radius,tinggi), luasPermukaan = silinder.permukaan(radius*2, tinggi);
+		System.out.printf("\nVolume Silinder adalah\t\t: %.2f\n",volume);
+		System.out.printf("Luas Permukaan Silinder adalah\t: %.2f\n",luasPermukaan);
+		programUlang();
+	}
 }
-
-// Kelas untuk Kubus
-class Kubus extends BangunRuang {
-    private double sisi;
-
-    public Kubus(double sisi) {
-        this.sisi = sisi;
-    }
-
-    @Override
-    public void hitungVolume() {
-        volume = Math.pow(sisi, 3);
-    }
-
-    @Override
-    public void hitungLuasPermukaan() {
-        luasPermukaan = 6 * Math.pow(sisi, 2);
-    }
-}
-
-// Kelas untuk Balok
-class Balok extends BangunRuang {
-    private double panjang;
-    private double lebar;
-    private double tinggi;
-
-    public Balok(double panjang, double lebar, double tinggi) {
-        this.panjang = panjang;
-        this.lebar = lebar;
-        this.tinggi = tinggi;
-    }
-
-    @Override
-    public void hitungVolume() {
-        volume = panjang * lebar * tinggi;
-    }
-
-    @Override
-    public void hitungLuasPermukaan() {
-        luasPermukaan = 2 * (panjang * lebar + panjang * tinggi + lebar * tinggi);
-    }
-}
-
-// Kelas untuk Silinder
-class Silinder extends BangunRuang {
-    private double jariJari;
-    private double tinggi;
-
-    public Silinder(double jariJari, double tinggi) {
-        this.jariJari = jariJari;
-        this.tinggi = tinggi;
-    }
-
-    @Override
-    public void hitungVolume() {
-        volume = Math.PI * Math.pow(jariJari, 2) * tinggi;
-    }
-
-    @Override
-    public void hitungLuasPermukaan() {
-        luasPermukaan = 2 * Math.PI * jariJari * (jariJari + tinggi);
-    }
-}
-
-public class mengukurBangun {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int kodeBangun;
-        String ulang;
-
-        do {
-            System.out.println("===========================");
-            System.out.println("== Program Hitung Bangun ==");
-            System.out.println("===========================");
-            System.out.println("1. Kubus");
-            System.out.println("2. Balok");
-            System.out.println("3. Silinder");
-            System.out.println("0. Keluar");
-            System.out.print("Ingin menghitung bangun apa? ");
-            kodeBangun = scanner.nextInt();
-
-            switch (kodeBangun) {
-                case 1:
-                    System.out.print("Masukkan panjang sisi kubus: ");
-                    double sisiKubus = scanner.nextDouble();
-                    Kubus kubus = new Kubus(sisiKubus);
-                    kubus.hitungVolume();
-                    kubus.hitungLuasPermukaan();
-                    kubus.tampilHasil();
-                    break;
-                case 2:
-                    System.out.print("Masukkan panjang, lebar, dan tinggi balok: ");
-                    double panjang = scanner.nextDouble();
-                    double lebar = scanner.nextDouble();
-                    double tinggi = scanner.nextDouble();
-                    Balok balok = new Balok(panjang, lebar, tinggi);
-                    balok.hitungVolume();
-                    balok.hitungLuasPermukaan();
-                    balok.tampilHasil();
-                    break;
-                case 3:
-                    System.out.print("Masukkan jari-jari dan tinggi silinder: ");
-                    double jariJari = scanner.nextDouble();
-                    tinggi = scanner.nextDouble();
-                    Silinder silinder = new Silinder(jariJari, tinggi);
-                    silinder.hitungVolume();
-                    silinder.hitungLuasPermukaan();
-                    silinder.tampilHasil();
-                    break;
-                case 0:
-                    break;
-                default:
-                    System.out.println("Input tidak valid (1-3)");
-            }
-
-            if (kodeBangun != 0) {
-                System.out.print("Ingin mengulang? (Y/N) ");
-                ulang = scanner.next();
-            } else {
-                ulang = "N";
-            }
-
-        } while (ulang.equalsIgnoreCase("Y"));
-
-        System.out.println("===========================");
-        System.out.println("== TERIMAKASIH^^ SEE YOU ==");
-        System.out.println("===========================");
-        scanner.close();
-    }
+public class silinder {
+	static double kelilingLingkaran(double dia){
+		return Math.PI*dia;
+	}
+	static double luasLingkaran(double rad){
+		return Math.PI*rad*rad;
+	}
+	static double permukaan(double dia, double tinggi){
+		return Math.PI*dia*tinggi+2*Math.PI*dia;
+	}
+	static double volume(double rad, double tinggi){
+		return (Math.PI*rad*rad)*tinggi;
+	}
 }
