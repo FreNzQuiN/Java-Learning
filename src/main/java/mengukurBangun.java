@@ -1,5 +1,22 @@
+package main.java;
+
 import java.util.*;
 import java.lang.*;
+
+public class silinder {
+	static double kelilingLingkaran(double dia){
+		return Math.PI*dia;
+	}
+	static double luasLingkaran(double rad){
+		return Math.PI*rad*rad;
+	}
+	static double permukaan(double dia, double tinggi){
+		return Math.PI*dia*tinggi+2*Math.PI*dia;
+	}
+	static double volume(double rad, double tinggi){
+		return (Math.PI*rad*rad)*tinggi;
+	}
+}
 
 class mengukurBangun {
 	static Scanner scan = new Scanner(System.in);
@@ -82,19 +99,5 @@ class mengukurBangun {
 		System.out.printf("\nVolume Silinder adalah\t\t: %.2f\n",volume);
 		System.out.printf("Luas Permukaan Silinder adalah\t: %.2f\n",luasPermukaan);
 		programUlang();
-	}
-}
-public class silinder {
-	static double kelilingLingkaran(double dia){
-		return Math.PI*dia;
-	}
-	static double luasLingkaran(double rad){
-		return Math.PI*rad*rad;
-	}
-	static double permukaan(double dia, double tinggi){
-		return Math.PI*dia*tinggi+2*Math.PI*dia;
-	}
-	static double volume(double rad, double tinggi){
-		return (Math.PI*rad*rad)*tinggi;
 	}
 }
