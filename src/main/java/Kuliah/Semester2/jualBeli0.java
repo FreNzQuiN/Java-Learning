@@ -1,6 +1,6 @@
-import java.util.Scanner;
-import java.util.ArrayList;
+package Kuliah.Semester2;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Locale;
 
 class Customer {
@@ -18,7 +18,7 @@ class Customer {
 		jumlahPerson++;
 	}
 	public void lihatIsi (){
-		System.out.printf("==×× %s ××==\n",nama);
+		System.out.printf("==xx %s xx==\n",nama);
 		troli.lihatIsi();
 		System.out.println();
 	}
@@ -73,7 +73,7 @@ class Produk {
 	}
 	public void tampilkanProduk(){
 		NumberFormat rupiah = NumberFormat.getCurrencyInstance(new Locale("id","ID"));
-		System.out.printf("%s : %d × %s\n",nama,jumlahDibeli,rupiah.format(harga));
+		System.out.printf("%s : %d x %s\n",nama,jumlahDibeli,rupiah.format(harga));
 	}
 }
 
