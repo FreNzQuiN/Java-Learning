@@ -116,4 +116,22 @@ public class exampleRational extends Number implements Comparable<exampleRationa
         else
             return 0;
     }
+
+    public static void main(String[] args) {
+        Rational r1 = new Rational(-2, 6);
+        System.out.println(r1.getNumerator());
+        System.out.println(r1.getDenominator());
+        System.out.println(r1.intValue());
+        System.out.println(r1.doubleValue());
+    }
+}
+
+class Rational extends exampleRational {
+    public Rational() {
+        super();
+    }
+
+    public Rational(long numerator, long denominator) {
+        super(numerator, denominator);
+    }
 }

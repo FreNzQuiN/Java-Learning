@@ -1,9 +1,8 @@
 package Kuliah.Semester2;
-
 import java.math.BigDecimal;
 import java.util.Scanner;
 
-public class Tugas4PemJut {
+public class Tugas4 {
 
     public static class Rational extends Number implements Comparable<Rational> {
         private long numerator = 0;
@@ -137,32 +136,37 @@ public class Tugas4PemJut {
             numerator /= gcd;
             denominator /= gcd;
 
-            System.out.println(numerator + "/" + denominator);
+            System.out.println("The fraction number is " + numerator + "/" + denominator);
         }
     }
 
     public static void main(String[] args) {
 
-        System.out.println("====++  BAGIAN 2 - SOAL 1330 ++====\n");
+        // System.out.println("====++  BAGIAN 2 - SOAL 1330 ++====\n");
 
-        Rational r1 = new Rational(-2, 6);
-        System.out.println(r1.getNumerator());
-        System.out.println(r1.getDenominator());
-        System.out.println(r1.intValue());
-        System.out.println(r1.doubleValue());
+        // Rational r1 = new Rational(-2, 6);
+        // System.out.println(r1.getNumerator());
+        // System.out.println(r1.getDenominator());
+        // System.out.println(r1.intValue());
+        // System.out.println(r1.doubleValue());
 
         // System.out.println("\n\n====++  BAGIAN 2 - SOAL 1331 ++====\n");
 
         // Rational r1 = new Rational(-2,6);
         // Object r2 = new Rational(1,45);
         // System.out.println(r2.compareTo(r1));
-        // System.out.println("Wrong because ");
+        // System.out.println("Wrong because r2 is Object");
+
+        // System.out.println("\n\n====++  BAGIAN 2 - SOAL 1334 ++====\n");
+        // Rational r1 = new Rational(1, 2);
+        // Rational r2 = new Rational(1, -2);
+        // System.out.println(r1.add(r2));
 
         System.out.println("\n\n====++  BAGIAN 3 - SOAL 1318 ++====\n");
         int n = 100;
         BigDecimal sum = BigDecimal.ZERO;
         for (int i = 1; i < n; i++) {
-            System.out.println(sum + " + " + i + "/" + (i + 1) + " = ");
+            // System.out.println(sum + " + " + i + "/" + (i + 1) + " = ");
             double x = new Rational(i, i + 1).doubleValue();
             sum = sum.add(BigDecimal.valueOf(x));
         }
@@ -170,10 +174,13 @@ public class Tugas4PemJut {
 
         System.out.println("\n\n====++ BAGIAN 3 - SOAL 1319 ++====");
         Scanner scan = new Scanner(System.in);
+
+        System.out.print("Enter a decimal number: ");
         String input = scan.next();
         double x = Double.parseDouble(input);
         Fraction fraction = new Fraction(x);
         fraction.getFraction();
+        
         scan.close();
     }
 }
