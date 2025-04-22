@@ -1,4 +1,4 @@
-//package Kuliah.Semester2;
+package Kuliah.Semester2;
 import java.util.Scanner;
 
 public class KambingJumboMbek {

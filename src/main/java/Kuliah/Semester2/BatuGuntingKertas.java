@@ -1,3 +1,5 @@
+package Kuliah.Semester2;
+
 import java.util.*;
 
 class Player {
