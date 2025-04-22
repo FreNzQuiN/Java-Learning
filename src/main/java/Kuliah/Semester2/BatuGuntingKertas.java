@@ -10,7 +10,7 @@ class Player {
         "batu", 0.33, "gunting", 0.33, "kertas", 0.34
     ));
     private Map<String, Integer> skill = new HashMap<>(); // future extension
-    private static final Random rand = new Random();
+    private static final Random rand = new Random(System.currentTimeMillis());
 
     public Player(String nama) {
         this.nama = nama;
